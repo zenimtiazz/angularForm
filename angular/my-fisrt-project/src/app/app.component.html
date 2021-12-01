@@ -4,14 +4,14 @@
   <pre></pre>
 <h1>User Registration</h1>
 
-    <form #login= "ngForm" (ngSubmit) = "onClickSubmit(login.value)" novalidate >
-      <!-- {{ friendModel | json }}  -->
+    <form #login= "ngForm" *ngIf = "!submitted" (ngSubmit) = "onClickSubmit(login.value)" novalidate >
+     <!-- {{ friendModel | json }}  -->
   <pre></pre>
       <div class = "form-group">
       <label for="firstname">
         First Name
       </label> <br>
-      <input required minlength="2" maxlength="4" ngModel name = "firstname" #firstname = "ngModel" type="text" id = "firstname" class = "form-control" [(ngModel)]="friendModel.firstname">
+      <input required minlength="2" maxlength="6" ngModel name = "firstname" #firstname = "ngModel" type="text" id = "firstname" class = "form-control" [(ngModel)]="friendModel.firstname">
     <div *ngIf = "firstname.touched && !firstname.valid" class="alert alert-danger">First Name is required</div>
     <!-- <div *ngIf = "firstname.errors.minlength">Characters are too short</div> -->
     
@@ -51,7 +51,7 @@
       </div>
       <pre></pre>
       <div>
-        <label for="language">Favourite language</label>
+        <label for="language" id = "language" class = "form-control">Favourite language</label>
        
         <select [(ngModel)]="languages" id = "lanuage">
           <option *ngFor="let language of languages" >
@@ -65,6 +65,13 @@
   </div>
   </form>
 
-
-
+</div>
+<pre></pre>
+<div class="friend">
+  <h2>FriendList</h2>
+  <pre></pre>
+  <ul *ngFor = "let friend of friends">
+Name:  {{friend.firstname}}  {{friend.lastname}} <br> Address: {{friend.address}} <br> Email: {{friend.email}}
+  </ul>
+</div>
 <router-outlet></router-outlet>

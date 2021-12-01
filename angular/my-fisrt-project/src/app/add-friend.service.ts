@@ -16,9 +16,8 @@ export class AddFriendService {
   addFriend(friend: Friend , url:string){
   
     console.log(friend);
-    return this.http.post('http://localhost:6969/allFriends',friend);
+    return this.http.post('http://localhost:6969/addFriend',friend);
   }
-  getFriend():Observable <any>{
-    return this.http.get('http://localhost:6969/allFriends');
-  }
+
+
 }

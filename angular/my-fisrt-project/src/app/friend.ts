@@ -6,7 +6,8 @@ constructor(public firstname?: string,
       public lastname?: string, 
       public  address?: string,
       public email?: string,
-       public phoneno?:number){}
+       public phoneno?:number,
+       public language?:string){}
 
 
     
