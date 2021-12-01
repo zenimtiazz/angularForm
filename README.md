@@ -70,3 +70,18 @@ A POST request to add a friend to your friend list. :x:
     - Remember the url that we left empty? It's time to configure a path to which we'll post our data. Start by changing the url to <code>'http://localhost:PORT/'</code>.
     - Next, make a new post function with path "addFriend". In here, push the request body to the allFriends array.
     - If you now go to your form and add a friend, submit the form, you'll see in your server, localhost:PORT/allFriends, that the friend has been added to the list.
+ ### Day 03 
+   - If you now go to your form and add a friend, submit the form, you'll see in your server, localhost:PORT/allFriends, that the friend has been added to the list.
+11. You've sent data, but now we also want to display the newly updated friend list on your page. To do this, we'll have to make a get request to the server.
+    - We want to do this get request in 2 different cases, one is when the page loads and the other is when we post data to the server.
+    - First, let's write the function itself and later call the function when we need it. Make a new public async function in the component and pass the url as a parameter. Typehint the parameter and the function. The function will return a Promise of type any. A typehint of a promise with type looks like this: <code>Promise<any></code>. :heavy_check_mark:
+    - Then, add a fetch to the function and return and await it. The method should be get and the headers should be <code>'Content-Type': 'application/json'</code>. :heavy_check_mark:
+    - Add a property to your component class called allFriends and in the fetch where you can access the fetched data, assign the value of the data to that property. :heavy_check_mark:
+    - We now have our fetch working, let's call it when we submit the form first. To do this in the success part of the subscribe, call the function with url 'http://localhost:PORT/allFriends'. :heavy_check_mark:
+    - To do it on page load, import OnInit. Next your AppComponent class has to implement it.
+    - To make something happen on pageload, in the class add <code>ngOnInit(): any { something happens }</code>. In here, call your fetch function like we did previously for the form submit. :heavy_check_mark:
+    - We now have our friend list updated in the property allFriends of the component class.
+    -  To check if you have your friends data console log it.
+12. Now we can display the friends in the template using the property allFriends. :heavy_check_mark:
+    - To do this we'll use the ngFor loop, add the following code to a div: <code>*ngFor="let friend of allFriends"</code>. :heavy_check_mark:
+    - In this div, if you enter {{ friend.email }} for example. You'll see that on your page you'll see all the emails of your friends displayed. :heavy_check_mark:
